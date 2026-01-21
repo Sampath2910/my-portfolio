@@ -1,3 +1,4 @@
+// src/pages/VideoPlayer.jsx
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -5,13 +6,10 @@ export default function VideoPlayer() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Read query param
   const params = new URLSearchParams(location.search);
   const videoKey = params.get("video");
 
-  /**
-   * Cloudinary video URLs (PRODUCTION SAFE)
-   */
+  // ✅ Cloudinary video URLs (FINAL)
   const videos = {
     ecoscan:
       "https://res.cloudinary.com/dyymxikuh/video/upload/v1768980153/Ecoscan_Project_1_ijvd2x.mp4",
@@ -33,7 +31,7 @@ export default function VideoPlayer() {
 
   return (
     <div className="min-h-screen bg-black flex flex-col items-center justify-center px-6 py-10">
-      {/* Back button */}
+      {/* Back */}
       <button
         onClick={() => navigate(-1)}
         className="self-start mb-6 px-4 py-2 rounded-md 
@@ -42,27 +40,23 @@ export default function VideoPlayer() {
         ⬅ Back
       </button>
 
-      {/* Title */}
       <h1 className="text-white text-2xl md:text-3xl font-semibold mb-6 text-center">
         Project Demo Video
       </h1>
 
-      {/* Error handling */}
       {!videoSrc ? (
         <p className="text-red-400 text-lg">
           ❌ Video not found. Please go back and try again.
         </p>
       ) : (
         <video
+          src={videoSrc}
           controls
           autoPlay
           playsInline
           preload="metadata"
           className="w-full max-w-5xl rounded-xl shadow-2xl border border-white/10"
-        >
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support HTML5 video.
-        </video>
+        />
       )}
     </div>
   );

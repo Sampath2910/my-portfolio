@@ -4,11 +4,9 @@ import { motion } from "framer-motion";
 import { X, Play, ExternalLink } from "lucide-react";
 
 export default function ProjectModal({ project, onClose }) {
-  // ESC key close
+  // ESC close
   useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") onClose();
-    };
+    const handleEsc = (e) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, [onClose]);
@@ -37,42 +35,32 @@ export default function ProjectModal({ project, onClose }) {
           <X size={20} />
         </button>
 
-        {/* IMAGE — fully visible */}
+        {/* Image */}
         <div className="mb-6 rounded-xl overflow-hidden border dark:border-gray-700">
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-auto max-h-[340px] object-contain bg-white dark:bg-gray-900"
+            className="w-full max-h-[340px] object-contain bg-white dark:bg-gray-900"
           />
         </div>
 
-        {/* TITLE */}
-        <h2 className="text-2xl font-bold mb-4 
-          bg-gradient-to-r from-[#10B981] to-[#06B6D4] 
-          bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r 
+                       from-[#10B981] to-[#06B6D4] bg-clip-text text-transparent">
           {project.title}
         </h2>
 
-        {/* DETAILS */}
-        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+        <p className="text-sm text-gray-700 dark:text-gray-300 mb-4">
           {project.details}
         </p>
 
-        {/* PROBLEM */}
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          <strong className="text-gray-900 dark:text-gray-100">Problem:</strong>{" "}
-          {project.problem}
+          <strong>Problem:</strong> {project.problem}
         </p>
 
-        {/* LEARNED – improved spacing */}
-        <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-          <strong className="text-gray-900 dark:text-gray-100">
-            What I Learned:
-          </strong>{" "}
-          {project.learning}
+        <p className="text-sm text-gray-700 dark:text-gray-300 mb-6">
+          <strong>What I Learned:</strong> {project.learning}
         </p>
 
-        {/* TECH */}
         <div className="flex flex-wrap gap-2 mb-8">
           {project.tech.map((t, i) => (
             <span
@@ -85,7 +73,6 @@ export default function ProjectModal({ project, onClose }) {
           ))}
         </div>
 
-        {/* ACTION BUTTONS */}
         <div className="flex flex-wrap gap-4">
           {project.videoKey && (
             <a
