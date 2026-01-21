@@ -10,15 +10,23 @@ export default function VideoPlayer() {
   const videoKey = params.get("video");
 
   /**
-   * IMPORTANT:
-   * These paths MUST match files inside public/videos/
+   * Cloudinary video URLs (PRODUCTION SAFE)
    */
   const videos = {
-    ecoscan: "/videos/ecoscan.mp4",
-    "co2-emission": "/videos/co2-emission.mp4",
-    houseprice: "/videos/houseprice.mp4",
-    "diabetes-prediction": "/videos/diabetes-prediction.mp4",
-    mockinterview: "/videos/mockinterview.mp4",
+    ecoscan:
+      "https://res.cloudinary.com/dyymxikuh/video/upload/v1768980153/Ecoscan_Project_1_ijvd2x.mp4",
+
+    "co2-emission":
+      "https://res.cloudinary.com/dyymxikuh/video/upload/v1768980109/Co2_Emmission_1_wpfkni.mp4",
+
+    houseprice:
+      "https://res.cloudinary.com/dyymxikuh/video/upload/v1768980173/house-PRICE_PREDICTION_f0fkx0.mp4",
+
+    "diabetes-prediction":
+      "https://res.cloudinary.com/dyymxikuh/video/upload/v1768975240/diabetics_prediction_idca9g.mp4",
+
+    mockinterview:
+      "https://res.cloudinary.com/dyymxikuh/video/upload/v1768980184/Smart_Mock_Interview_mnsp7e.mp4",
   };
 
   const videoSrc = videos[videoKey];
@@ -49,7 +57,8 @@ export default function VideoPlayer() {
           controls
           autoPlay
           playsInline
-          className="w-full max-w-4xl rounded-xl shadow-2xl border border-white/10"
+          preload="metadata"
+          className="w-full max-w-5xl rounded-xl shadow-2xl border border-white/10"
         >
           <source src={videoSrc} type="video/mp4" />
           Your browser does not support HTML5 video.
