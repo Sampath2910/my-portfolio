@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akkapally-sampath.vercel.app/sitemap.xml
