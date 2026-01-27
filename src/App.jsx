@@ -42,7 +42,7 @@ export default function App() {
         <Route
           path="/"
           element={
-            <main className="max-w-7xl mx-auto px-6">
+            <main className="pt-24 max-w-7xl mx-auto px-6">
               <Hero />
 
               {/* --- EXPERIENCE (big banner like screenshot 1) --- */}
